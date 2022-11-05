@@ -10,9 +10,21 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -e .
-      - name: Get and store base data from BPS
+      - name: Get and store domains basedata from BPS
         env:
           MONGODB_URI: ${{ secrets.MONGODB_URI }}
           BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
         run: |
-          python src/indonesia_in_data/parse_basedata_bps.py
+          python src/indonesia_in_data/parse_domains_bps.py
+      - name: Get and store subjects basedata from BPS
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+        run: |
+          python src/indonesia_in_data/parse_subjects_bps.py
+      - name: Get and store variables basedata from BPS
+        env:
+          MONGODB_URI: ${{ secrets.MONGODB_URI }}
+          BPS_API_KEY: ${{ secrets.BPS_API_KEY }}
+        run: |
+          python src/indonesia_in_data/parse_variables_bps.py
